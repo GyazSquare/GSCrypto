@@ -1,0 +1,4 @@
+language: objective-c
+xcode_project: GSCrypto.xcodeproj
+xcode_scheme: GSCrypto
+xcode_sdk: iphonesimulator
