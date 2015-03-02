@@ -6,5 +6,6 @@ Pod::Spec.new do |s|
   s.license      = { :type => 'MIT' }
   s.author       = 'GyazSquare'
   s.source       = { :git => 'https://github.com/GyazSquare/GSCrypto.git', :tag => '1.0.0' }
+  s.source_files = 'GSCrypto/*.{h,m}'
   s.requires_arc = true
 end
