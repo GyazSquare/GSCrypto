@@ -7,6 +7,22 @@
 
 #include <CommonCrypto/CommonCrypto.h>
 
+typedef NS_ENUM(NSUInteger, GSHMACAlgorithm) {
+    GSHMACAlgorithmSHA1 = kCCHmacAlgSHA1,
+    GSHMACAlgorithmMD5 = kCCHmacAlgMD5,
+    GSHMACAlgorithmSHA256 = kCCHmacAlgSHA256,
+    GSHMACAlgorithmSHA384 = kCCHmacAlgSHA384,
+    GSHMACAlgorithmSHA512 = kCCHmacAlgSHA512,
+    GSHMACAlgorithmSHA224 = kCCHmacAlgSHA224
+};
+
+@interface NSData (GSHMACDigest)
+
+- (NSData *)gs_HMACDigestUsingAlgorithm:(GSHMACAlgorithm)algorithm key:(NSData *)key;
+- (NSString *)gs_HMACHexDigestUsingAlgorithm:(GSHMACAlgorithm)algorithm key:(NSData *)key;
+
+@end
+
 typedef NS_ENUM(NSInteger, GSCryptoAlgorithm) {
     GSCryptoAlgorithmAES = kCCAlgorithmAES,
     GSCryptoAlgorithmDES = kCCAlgorithmDES,

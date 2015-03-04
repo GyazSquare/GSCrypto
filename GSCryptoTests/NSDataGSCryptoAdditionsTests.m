@@ -23,6 +23,51 @@
     [super tearDown];
 }
 
+- (void)test_gs_HMACDigest {
+    // SHA1
+    {
+        NSData *data = [@"The quick brown fox jumps over the lazy dog" dataUsingEncoding:NSUTF8StringEncoding];
+        NSData *key = [@"password" dataUsingEncoding:NSUTF8StringEncoding];
+        NSString *hexDigest = [data gs_HMACHexDigestUsingAlgorithm:GSHMACAlgorithmSHA1 key:key];
+        XCTAssertEqualObjects(@"ac20071d3cb2626fe2eeb59e75a7f8d050698620", hexDigest);
+    }
+    // MD5
+    {
+        NSData *data = [@"The quick brown fox jumps over the lazy dog" dataUsingEncoding:NSUTF8StringEncoding];
+        NSData *key = [@"password" dataUsingEncoding:NSUTF8StringEncoding];
+        NSString *hexDigest = [data gs_HMACHexDigestUsingAlgorithm:GSHMACAlgorithmMD5 key:key];
+        XCTAssertEqualObjects(@"3fbdfb7c9d8071d904816c25fcaa8b94", hexDigest);
+    }
+    // SHA256
+    {
+        NSData *data = [@"The quick brown fox jumps over the lazy dog" dataUsingEncoding:NSUTF8StringEncoding];
+        NSData *key = [@"password" dataUsingEncoding:NSUTF8StringEncoding];
+        NSString *hexDigest = [data gs_HMACHexDigestUsingAlgorithm:GSHMACAlgorithmSHA256 key:key];
+        XCTAssertEqualObjects(@"f8a691703d515669c03fe5c16519c79ac27ad2e4dddcbad6a88f1015e2a756f7", hexDigest);
+    }
+    // SHA384
+    {
+        NSData *data = [@"The quick brown fox jumps over the lazy dog" dataUsingEncoding:NSUTF8StringEncoding];
+        NSData *key = [@"password" dataUsingEncoding:NSUTF8StringEncoding];
+        NSString *hexDigest = [data gs_HMACHexDigestUsingAlgorithm:GSHMACAlgorithmSHA384 key:key];
+        XCTAssertEqualObjects(@"e0b60f66512e3eb931526dba8ebf876229640f19f8e07d947a51e6a836b2257a5137cf6b9dd86b9394c54a2684509068", hexDigest);
+    }
+    // SHA512
+    {
+        NSData *data = [@"The quick brown fox jumps over the lazy dog" dataUsingEncoding:NSUTF8StringEncoding];
+        NSData *key = [@"password" dataUsingEncoding:NSUTF8StringEncoding];
+        NSString *hexDigest = [data gs_HMACHexDigestUsingAlgorithm:GSHMACAlgorithmSHA512 key:key];
+        XCTAssertEqualObjects(@"da67c952e7fc5747a1e9c51445d456b4115bce090a0ce2220c1b634b8e9242487be753dbf6d831491bfa0306dfaf601ce7362774cadbfd3f8e69eee532312e57", hexDigest);
+    }
+    // SHA224
+    {
+        NSData *data = [@"The quick brown fox jumps over the lazy dog" dataUsingEncoding:NSUTF8StringEncoding];
+        NSData *key = [@"password" dataUsingEncoding:NSUTF8StringEncoding];
+        NSString *hexDigest = [data gs_HMACHexDigestUsingAlgorithm:GSHMACAlgorithmSHA224 key:key];
+        XCTAssertEqualObjects(@"84495705524e1738bff20d7b419c98961e894dfa37f1d2e7d14901b3", hexDigest);
+    }
+}
+
 - (void)test_gs_crypto {
     // param error
     {
