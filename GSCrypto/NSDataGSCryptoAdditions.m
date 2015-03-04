@@ -39,6 +39,47 @@ static NSError * __GSErrorWithCryptoStatus(CCCryptorStatus status) {
     return [NSError errorWithDomain:GSCryptoErrorDomain code:status userInfo:userInfo];
 }
 
+@implementation NSData (GSHMACDigest)
+
+- (NSData *)gs_HMACDigestUsingAlgorithm:(GSHMACAlgorithm)algorithm key:(NSData *)key {
+    size_t length;
+    switch (algorithm) {
+        case GSHMACAlgorithmSHA1:
+            length = CC_SHA1_DIGEST_LENGTH;
+            break;
+        case GSHMACAlgorithmMD5:
+            length = CC_MD5_DIGEST_LENGTH;
+            break;
+        case GSHMACAlgorithmSHA256:
+            length = CC_SHA256_DIGEST_LENGTH;
+            break;
+        case GSHMACAlgorithmSHA384:
+            length = CC_SHA384_DIGEST_LENGTH;
+            break;
+        case GSHMACAlgorithmSHA512:
+            length = CC_SHA512_DIGEST_LENGTH;
+            break;
+        case GSHMACAlgorithmSHA224:
+            length = CC_SHA224_DIGEST_LENGTH;
+            break;
+    }
+    unsigned char data[length];
+    CCHmac(algorithm, key.bytes, key.length, self.bytes, self.length, data);
+    return [NSData dataWithBytes:data length:length];
+}
+
+- (NSString *)gs_HMACHexDigestUsingAlgorithm:(GSHMACAlgorithm)algorithm key:(NSData *)key {
+    NSData *data = [self gs_HMACDigestUsingAlgorithm:algorithm key:key];
+    const unsigned char *hmac = data.bytes;
+    NSMutableString *hexString = [NSMutableString string];
+    for (NSUInteger i = 0; i < data.length; i++) {
+        [hexString appendFormat:@"%02x", hmac[i]];
+    }
+    return hexString;
+}
+
+@end
+
 @implementation NSData (GSCrypto)
 
 - (NSData *)gs_encryptedDataUsingAlgorithm:(GSCryptoAlgorithm)algorithm options:(GSCryptoOptions)options key:(NSData *)key initializationVector:(NSData *)initializationVector error:(NSError **)error {
