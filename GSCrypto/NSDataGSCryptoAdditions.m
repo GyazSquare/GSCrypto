@@ -39,9 +39,9 @@ static NSError * __GSErrorWithCryptoStatus(CCCryptorStatus status) {
     return [NSError errorWithDomain:GSCryptoErrorDomain code:status userInfo:userInfo];
 }
 
-@implementation NSData (GSHMACDigest)
+@implementation NSData (GSHMAC)
 
-- (NSData *)gs_HMACDigestUsingAlgorithm:(GSHMACAlgorithm)algorithm key:(NSData *)key {
+- (NSData *)gs_HMACUsingAlgorithm:(GSHMACAlgorithm)algorithm key:(NSData *)key {
     size_t length;
     switch (algorithm) {
         case GSHMACAlgorithmSHA1:

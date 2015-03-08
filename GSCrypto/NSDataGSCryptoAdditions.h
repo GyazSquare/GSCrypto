@@ -16,9 +16,9 @@ typedef NS_ENUM(NSUInteger, GSHMACAlgorithm) {
     GSHMACAlgorithmSHA224 = kCCHmacAlgSHA224
 };
 
-@interface NSData (GSHMACDigest)
+@interface NSData (GSHMAC)
 
-- (NSData *)gs_HMACDigestUsingAlgorithm:(GSHMACAlgorithm)algorithm key:(NSData *)key;
+- (NSData *)gs_HMACUsingAlgorithm:(GSHMACAlgorithm)algorithm key:(NSData *)key;
 
 @end
 
