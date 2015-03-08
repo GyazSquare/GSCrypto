@@ -28,43 +28,55 @@
     {
         NSData *data = [@"The quick brown fox jumps over the lazy dog" dataUsingEncoding:NSUTF8StringEncoding];
         NSData *key = [@"password" dataUsingEncoding:NSUTF8StringEncoding];
-        NSString *hexDigest = [data gs_HMACHexDigestUsingAlgorithm:GSHMACAlgorithmSHA1 key:key];
-        XCTAssertEqualObjects(@"ac20071d3cb2626fe2eeb59e75a7f8d050698620", hexDigest);
+        NSData *digest = [data gs_HMACDigestUsingAlgorithm:GSHMACAlgorithmSHA1 key:key];
+        const void *bytes = "\xac\x20\x07\x1d\x3c\xb2\x62\x6f\xe2\xee\xb5\x9e\x75\xa7\xf8\xd0\x50\x69\x86\x20";
+        NSData *expected = [NSData dataWithBytes:bytes length:strlen(bytes)];
+        XCTAssertEqualObjects(expected, digest);
     }
     // MD5
     {
         NSData *data = [@"The quick brown fox jumps over the lazy dog" dataUsingEncoding:NSUTF8StringEncoding];
         NSData *key = [@"password" dataUsingEncoding:NSUTF8StringEncoding];
-        NSString *hexDigest = [data gs_HMACHexDigestUsingAlgorithm:GSHMACAlgorithmMD5 key:key];
-        XCTAssertEqualObjects(@"3fbdfb7c9d8071d904816c25fcaa8b94", hexDigest);
+        NSData *digest = [data gs_HMACDigestUsingAlgorithm:GSHMACAlgorithmMD5 key:key];
+        const void *bytes = "\x3f\xbd\xfb\x7c\x9d\x80\x71\xd9\x04\x81\x6c\x25\xfc\xaa\x8b\x94";
+        NSData *expected = [NSData dataWithBytes:bytes length:strlen(bytes)];
+        XCTAssertEqualObjects(expected, digest);
     }
     // SHA256
     {
         NSData *data = [@"The quick brown fox jumps over the lazy dog" dataUsingEncoding:NSUTF8StringEncoding];
         NSData *key = [@"password" dataUsingEncoding:NSUTF8StringEncoding];
-        NSString *hexDigest = [data gs_HMACHexDigestUsingAlgorithm:GSHMACAlgorithmSHA256 key:key];
-        XCTAssertEqualObjects(@"f8a691703d515669c03fe5c16519c79ac27ad2e4dddcbad6a88f1015e2a756f7", hexDigest);
+        NSData *digest = [data gs_HMACDigestUsingAlgorithm:GSHMACAlgorithmSHA256 key:key];
+        const void *bytes = "\xf8\xa6\x91\x70\x3d\x51\x56\x69\xc0\x3f\xe5\xc1\x65\x19\xc7\x9a\xc2\x7a\xd2\xe4\xdd\xdc\xba\xd6\xa8\x8f\x10\x15\xe2\xa7\x56\xf7";
+        NSData *expected = [NSData dataWithBytes:bytes length:strlen(bytes)];
+        XCTAssertEqualObjects(expected, digest);
     }
     // SHA384
     {
         NSData *data = [@"The quick brown fox jumps over the lazy dog" dataUsingEncoding:NSUTF8StringEncoding];
         NSData *key = [@"password" dataUsingEncoding:NSUTF8StringEncoding];
-        NSString *hexDigest = [data gs_HMACHexDigestUsingAlgorithm:GSHMACAlgorithmSHA384 key:key];
-        XCTAssertEqualObjects(@"e0b60f66512e3eb931526dba8ebf876229640f19f8e07d947a51e6a836b2257a5137cf6b9dd86b9394c54a2684509068", hexDigest);
+        NSData *digest = [data gs_HMACDigestUsingAlgorithm:GSHMACAlgorithmSHA384 key:key];
+        const void *bytes = "\xe0\xb6\x0f\x66\x51\x2e\x3e\xb9\x31\x52\x6d\xba\x8e\xbf\x87\x62\x29\x64\x0f\x19\xf8\xe0\x7d\x94\x7a\x51\xe6\xa8\x36\xb2\x25\x7a\x51\x37\xcf\x6b\x9d\xd8\x6b\x93\x94\xc5\x4a\x26\x84\x50\x90\x68";
+        NSData *expected = [NSData dataWithBytes:bytes length:strlen(bytes)];
+        XCTAssertEqualObjects(expected, digest);
     }
     // SHA512
     {
         NSData *data = [@"The quick brown fox jumps over the lazy dog" dataUsingEncoding:NSUTF8StringEncoding];
         NSData *key = [@"password" dataUsingEncoding:NSUTF8StringEncoding];
-        NSString *hexDigest = [data gs_HMACHexDigestUsingAlgorithm:GSHMACAlgorithmSHA512 key:key];
-        XCTAssertEqualObjects(@"da67c952e7fc5747a1e9c51445d456b4115bce090a0ce2220c1b634b8e9242487be753dbf6d831491bfa0306dfaf601ce7362774cadbfd3f8e69eee532312e57", hexDigest);
+        NSData *digest = [data gs_HMACDigestUsingAlgorithm:GSHMACAlgorithmSHA512 key:key];
+        const void *bytes = "\xda\x67\xc9\x52\xe7\xfc\x57\x47\xa1\xe9\xc5\x14\x45\xd4\x56\xb4\x11\x5b\xce\x09\x0a\x0c\xe2\x22\x0c\x1b\x63\x4b\x8e\x92\x42\x48\x7b\xe7\x53\xdb\xf6\xd8\x31\x49\x1b\xfa\x03\x06\xdf\xaf\x60\x1c\xe7\x36\x27\x74\xca\xdb\xfd\x3f\x8e\x69\xee\xe5\x32\x31\x2e\x57";
+        NSData *expected = [NSData dataWithBytes:bytes length:strlen(bytes)];
+        XCTAssertEqualObjects(expected, digest);
     }
     // SHA224
     {
         NSData *data = [@"The quick brown fox jumps over the lazy dog" dataUsingEncoding:NSUTF8StringEncoding];
         NSData *key = [@"password" dataUsingEncoding:NSUTF8StringEncoding];
-        NSString *hexDigest = [data gs_HMACHexDigestUsingAlgorithm:GSHMACAlgorithmSHA224 key:key];
-        XCTAssertEqualObjects(@"84495705524e1738bff20d7b419c98961e894dfa37f1d2e7d14901b3", hexDigest);
+        NSData *digest = [data gs_HMACDigestUsingAlgorithm:GSHMACAlgorithmSHA224 key:key];
+        const void *bytes = "\x84\x49\x57\x05\x52\x4e\x17\x38\xbf\xf2\x0d\x7b\x41\x9c\x98\x96\x1e\x89\x4d\xfa\x37\xf1\xd2\xe7\xd1\x49\x01\xb3";
+        NSData *expected = [NSData dataWithBytes:bytes length:strlen(bytes)];
+        XCTAssertEqualObjects(expected, digest);
     }
 }
 

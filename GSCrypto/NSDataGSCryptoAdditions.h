@@ -19,7 +19,6 @@ typedef NS_ENUM(NSUInteger, GSHMACAlgorithm) {
 @interface NSData (GSHMACDigest)
 
 - (NSData *)gs_HMACDigestUsingAlgorithm:(GSHMACAlgorithm)algorithm key:(NSData *)key;
-- (NSString *)gs_HMACHexDigestUsingAlgorithm:(GSHMACAlgorithm)algorithm key:(NSData *)key;
 
 @end
 

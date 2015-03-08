@@ -68,16 +68,6 @@ static NSError * __GSErrorWithCryptoStatus(CCCryptorStatus status) {
     return [NSData dataWithBytes:data length:length];
 }
 
-- (NSString *)gs_HMACHexDigestUsingAlgorithm:(GSHMACAlgorithm)algorithm key:(NSData *)key {
-    NSData *data = [self gs_HMACDigestUsingAlgorithm:algorithm key:key];
-    const unsigned char *hmac = data.bytes;
-    NSMutableString *hexString = [NSMutableString string];
-    for (NSUInteger i = 0; i < data.length; i++) {
-        [hexString appendFormat:@"%02x", hmac[i]];
-    }
-    return hexString;
-}
-
 @end
 
 @implementation NSData (GSCrypto)
