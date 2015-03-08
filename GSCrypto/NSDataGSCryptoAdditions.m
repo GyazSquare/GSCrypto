@@ -39,6 +39,58 @@ static NSError * __GSErrorWithCryptoStatus(CCCryptorStatus status) {
     return [NSError errorWithDomain:GSCryptoErrorDomain code:status userInfo:userInfo];
 }
 
+@implementation NSData (GSDigest)
+
+- (NSData *)gs_MD2Digest {
+    unsigned char md[CC_MD2_DIGEST_LENGTH];
+    CC_MD2(self.bytes, (CC_LONG)self.length, md);
+    return [NSData dataWithBytes:md length:CC_MD2_DIGEST_LENGTH];
+}
+
+- (NSData *)gs_MD4Digest {
+    unsigned char md[CC_MD4_DIGEST_LENGTH];
+    CC_MD4(self.bytes, (CC_LONG)self.length, md);
+    return [NSData dataWithBytes:md length:CC_MD4_DIGEST_LENGTH];
+}
+
+- (NSData *)gs_MD5Digest {
+    unsigned char md[CC_MD5_DIGEST_LENGTH];
+    CC_MD5(self.bytes, (CC_LONG)self.length, md);
+    return [NSData dataWithBytes:md length:CC_MD5_DIGEST_LENGTH];
+}
+
+- (NSData *)gs_SHA1Digest {
+    unsigned char md[CC_SHA1_DIGEST_LENGTH];
+    CC_SHA1(self.bytes, (CC_LONG)self.length, md);
+    return [NSData dataWithBytes:md length:CC_SHA1_DIGEST_LENGTH];
+}
+
+- (NSData *)gs_SHA224Digest {
+    unsigned char md[CC_SHA224_DIGEST_LENGTH];
+    CC_SHA224(self.bytes, (CC_LONG)self.length, md);
+    return [NSData dataWithBytes:md length:CC_SHA224_DIGEST_LENGTH];
+}
+
+- (NSData *)gs_SHA256Digest {
+    unsigned char md[CC_SHA256_DIGEST_LENGTH];
+    CC_SHA256(self.bytes, (CC_LONG)self.length, md);
+    return [NSData dataWithBytes:md length:CC_SHA256_DIGEST_LENGTH];
+}
+
+- (NSData *)gs_SHA384Digest {
+    unsigned char md[CC_SHA384_DIGEST_LENGTH];
+    CC_SHA384(self.bytes, (CC_LONG)self.length, md);
+    return [NSData dataWithBytes:md length:CC_SHA384_DIGEST_LENGTH];
+}
+
+- (NSData *)gs_SHA512Digest {
+    unsigned char md[CC_SHA512_DIGEST_LENGTH];
+    CC_SHA512(self.bytes, (CC_LONG)self.length, md);
+    return [NSData dataWithBytes:md length:CC_SHA512_DIGEST_LENGTH];
+}
+
+@end
+
 @implementation NSData (GSHMAC)
 
 - (NSData *)gs_HMACUsingAlgorithm:(GSHMACAlgorithm)algorithm key:(NSData *)key {

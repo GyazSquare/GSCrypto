@@ -23,6 +23,73 @@
     [super tearDown];
 }
 
+- (void)test_gs_digest {
+    // MD2
+    {
+        NSData *data = [@"The quick brown fox jumps over the lazy dog" dataUsingEncoding:NSUTF8StringEncoding];
+        NSData *digest = [data gs_MD2Digest];
+        const void *bytes = "\x03\xd8\x5a\x0d\x62\x9d\x2c\x44\x2e\x98\x75\x25\x31\x9f\xc4\x71";
+        NSData *expected = [NSData dataWithBytes:bytes length:strlen(bytes)];
+        XCTAssertEqualObjects(expected, digest);
+    }
+    // MD4
+    {
+        NSData *data = [@"The quick brown fox jumps over the lazy dog" dataUsingEncoding:NSUTF8StringEncoding];
+        NSData *digest = [data gs_MD4Digest];
+        const void *bytes = "\x1b\xee\x69\xa4\x6b\xa8\x11\x18\x5c\x19\x47\x62\xab\xae\xae\x90";
+        NSData *expected = [NSData dataWithBytes:bytes length:strlen(bytes)];
+        XCTAssertEqualObjects(expected, digest);
+    }
+    // MD5
+    {
+        NSData *data = [@"The quick brown fox jumps over the lazy dog" dataUsingEncoding:NSUTF8StringEncoding];
+        NSData *digest = [data gs_MD5Digest];
+        const void *bytes = "\x9e\x10\x7d\x9d\x37\x2b\xb6\x82\x6b\xd8\x1d\x35\x42\xa4\x19\xd6";
+        NSData *expected = [NSData dataWithBytes:bytes length:strlen(bytes)];
+        XCTAssertEqualObjects(expected, digest);
+    }
+    // SHA1
+    {
+        NSData *data = [@"The quick brown fox jumps over the lazy dog" dataUsingEncoding:NSUTF8StringEncoding];
+        NSData *digest = [data gs_SHA1Digest];
+        const void *bytes = "\x2f\xd4\xe1\xc6\x7a\x2d\x28\xfc\xed\x84\x9e\xe1\xbb\x76\xe7\x39\x1b\x93\xeb\x12";
+        NSData *expected = [NSData dataWithBytes:bytes length:strlen(bytes)];
+        XCTAssertEqualObjects(expected, digest);
+    }
+    // SHA224
+    {
+        NSData *data = [@"The quick brown fox jumps over the lazy dog" dataUsingEncoding:NSUTF8StringEncoding];
+        NSData *digest = [data gs_SHA224Digest];
+        const void *bytes = "\x73\x0e\x10\x9b\xd7\xa8\xa3\x2b\x1c\xb9\xd9\xa0\x9a\xa2\x32\x5d\x24\x30\x58\x7d\xdb\xc0\xc3\x8b\xad\x91\x15\x25";
+        NSData *expected = [NSData dataWithBytes:bytes length:strlen(bytes)];
+        XCTAssertEqualObjects(expected, digest);
+    }
+    // SHA256
+    {
+        NSData *data = [@"The quick brown fox jumps over the lazy dog" dataUsingEncoding:NSUTF8StringEncoding];
+        NSData *digest = [data gs_SHA256Digest];
+        const void *bytes = "\xd7\xa8\xfb\xb3\x07\xd7\x80\x94\x69\xca\x9a\xbc\xb0\x08\x2e\x4f\x8d\x56\x51\xe4\x6d\x3c\xdb\x76\x2d\x02\xd0\xbf\x37\xc9\xe5\x92";
+        NSData *expected = [NSData dataWithBytes:bytes length:strlen(bytes)];
+        XCTAssertEqualObjects(expected, digest);
+    }
+    // SHA384
+    {
+        NSData *data = [@"The quick brown fox jumps over the lazy dog" dataUsingEncoding:NSUTF8StringEncoding];
+        NSData *digest = [data gs_SHA384Digest];
+        const void *bytes = "\xca\x73\x7f\x10\x14\xa4\x8f\x4c\x0b\x6d\xd4\x3c\xb1\x77\xb0\xaf\xd9\xe5\x16\x93\x67\x54\x4c\x49\x40\x11\xe3\x31\x7d\xbf\x9a\x50\x9c\xb1\xe5\xdc\x1e\x85\xa9\x41\xbb\xee\x3d\x7f\x2a\xfb\xc9\xb1";
+        NSData *expected = [NSData dataWithBytes:bytes length:strlen(bytes)];
+        XCTAssertEqualObjects(expected, digest);
+    }
+    // SHA512
+    {
+        NSData *data = [@"The quick brown fox jumps over the lazy dog" dataUsingEncoding:NSUTF8StringEncoding];
+        NSData *digest = [data gs_SHA512Digest];
+        const void *bytes = "\x07\xe5\x47\xd9\x58\x6f\x6a\x73\xf7\x3f\xba\xc0\x43\x5e\xd7\x69\x51\x21\x8f\xb7\xd0\xc8\xd7\x88\xa3\x09\xd7\x85\x43\x6b\xbb\x64\x2e\x93\xa2\x52\xa9\x54\xf2\x39\x12\x54\x7d\x1e\x8a\x3b\x5e\xd6\xe1\xbf\xd7\x09\x78\x21\x23\x3f\xa0\x53\x8f\x3d\xb8\x54\xfe\xe6";
+        NSData *expected = [NSData dataWithBytes:bytes length:strlen(bytes)];
+        XCTAssertEqualObjects(expected, digest);
+    }
+}
+
 - (void)test_gs_HMAC {
     // SHA1
     {
