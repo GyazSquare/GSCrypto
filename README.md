@@ -22,6 +22,12 @@ Add the pod to your `Podfile`:
 pod 'GSCrypto'
 ```
 
+Install the pod:
+
+```sh
+$ pod install
+```
+
 ### Source
 
 Check out the source:
