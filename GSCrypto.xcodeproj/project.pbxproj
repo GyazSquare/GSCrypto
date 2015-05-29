@@ -92,8 +92,8 @@
 		D70D22B11AA2DC280050CD26 /* GSCryptoTests */ = {
 			isa = PBXGroup;
 			children = (
-				D70D22B21AA2DC280050CD26 /* Supporting Files */,
 				D79DF4191AA41B2500A35C9E /* NSDataGSCryptoAdditionsTests.m */,
+				D70D22B21AA2DC280050CD26 /* Supporting Files */,
 			);
 			path = GSCryptoTests;
 			sourceTree = "<group>";

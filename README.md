@@ -33,7 +33,7 @@ $ pod install
 Check out the source:
 
 ```sh
-git clone https://github.com/GyazSquare/GSCrypto.git
+$ git clone https://github.com/GyazSquare/GSCrypto.git
 ```
 
 ## License

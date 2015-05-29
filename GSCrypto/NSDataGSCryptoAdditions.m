@@ -124,17 +124,17 @@ static NSError * __GSErrorWithCryptoStatus(CCCryptorStatus status) {
 
 @implementation NSData (GSCrypto)
 
-- (NSData *)gs_encryptedDataUsingAlgorithm:(GSCryptoAlgorithm)algorithm options:(GSCryptoOptions)options key:(NSData *)key initializationVector:(NSData *)initializationVector error:(NSError **)error {
+- (nullable NSData *)gs_encryptedDataUsingAlgorithm:(GSCryptoAlgorithm)algorithm options:(GSCryptoOptions)options key:(NSData *)key initializationVector:(nullable NSData *)initializationVector error:(NSError **)error {
     return [self gs_cryptedDataWithOperation:kCCEncrypt usingAlgorithm:algorithm options:options key:key initializationVector:initializationVector error:error];
 }
 
-- (NSData *)gs_decryptedDataUsingAlgorithm:(GSCryptoAlgorithm)algorithm options:(GSCryptoOptions)options key:(NSData *)key initializationVector:(NSData *)initializationVector error:(NSError **)error {
+- (nullable NSData *)gs_decryptedDataUsingAlgorithm:(GSCryptoAlgorithm)algorithm options:(GSCryptoOptions)options key:(NSData *)key initializationVector:(nullable NSData *)initializationVector error:(NSError **)error {
     return [self gs_cryptedDataWithOperation:kCCDecrypt usingAlgorithm:algorithm options:options key:key initializationVector:initializationVector error:error];
 }
 
 #pragma mark - Class extensions
 
-- (NSData *)gs_cryptedDataWithOperation:(CCOperation)operation usingAlgorithm:(GSCryptoAlgorithm)algorithm options:(GSCryptoOptions)options key:(NSData *)key initializationVector:(NSData *)initializationVector error:(NSError **)error {
+- (nullable NSData *)gs_cryptedDataWithOperation:(CCOperation)operation usingAlgorithm:(GSCryptoAlgorithm)algorithm options:(GSCryptoOptions)options key:(NSData *)key initializationVector:(nullable NSData *)initializationVector error:(NSError **)error {
     __block NSData *cryptedData = nil;
     __block CCCryptorRef cryptor = NULL;
     __block CCCryptorStatus status = kCCSuccess;
