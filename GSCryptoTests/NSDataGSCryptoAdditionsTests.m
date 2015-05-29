@@ -150,8 +150,10 @@
 - (void)test_gs_crypto {
     // param error
     {
+        NSData *key = nil;
+        NSData *iv = nil;
         NSError *error = nil;
-        NSData *encryptedData = [[NSData data] gs_encryptedDataUsingAlgorithm:GSCryptoAlgorithmAES options:0 key:nil initializationVector:nil error:&error];
+        NSData *encryptedData = [[NSData data] gs_encryptedDataUsingAlgorithm:GSCryptoAlgorithmAES options:0 key:key initializationVector:iv error:&error];
         XCTAssertNil(encryptedData);
         XCTAssertNotNil(error);
     }
