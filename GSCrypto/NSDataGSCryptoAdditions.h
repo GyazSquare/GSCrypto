@@ -55,8 +55,8 @@ typedef NS_OPTIONS(NSUInteger, GSCryptoOptions) {
 
 @interface NSData (GSCrypto)
 
-- (nullable NSData *)gs_encryptedDataUsingAlgorithm:(GSCryptoAlgorithm)algorithm options:(GSCryptoOptions)options key:(NSData *)key initializationVector:(nullable NSData *)initializationVector error:(NSError **)error;
-- (nullable NSData *)gs_decryptedDataUsingAlgorithm:(GSCryptoAlgorithm)algorithm options:(GSCryptoOptions)options key:(NSData *)key initializationVector:(nullable NSData *)initializationVector error:(NSError **)error;
+- (nullable NSData *)gs_encryptedDataUsingAlgorithm:(GSCryptoAlgorithm)algorithm options:(GSCryptoOptions)options key:(nullable NSData *)key initializationVector:(nullable NSData *)initializationVector error:(NSError **)error;
+- (nullable NSData *)gs_decryptedDataUsingAlgorithm:(GSCryptoAlgorithm)algorithm options:(GSCryptoOptions)options key:(nullable NSData *)key initializationVector:(nullable NSData *)initializationVector error:(NSError **)error;
 
 @end
 
