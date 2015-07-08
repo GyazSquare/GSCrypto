@@ -1,5 +1,5 @@
 language: objective-c
-osx_image: beta-xcode6.3
+osx_image: xcode6.4
 xcode_project: GSCrypto.xcodeproj
 xcode_scheme: GSCrypto
 xcode_sdk: iphonesimulator
