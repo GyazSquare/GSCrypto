@@ -5,7 +5,7 @@ Pod::Spec.new do |s|
   s.license      = { :type => 'MIT' }
   s.homepage     = 'https://github.com/GyazSquare/GSCrypto'
   s.source       = { :git => 'https://github.com/GyazSquare/GSCrypto.git', :tag => '2.0.0' }
-  s.summary      = 'A simple digest library for iOS, OS X and watchOS.'
+  s.summary      = 'A simple digest library for iOS, OS X, watchOS and tvOS.'
   s.ios.deployment_target = '5.0'
   s.osx.deployment_target = '10.6'
   s.tvos.deployment_target = '9.0'
