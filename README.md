@@ -6,9 +6,9 @@ GSCrypto is a simple Objective-C digest library for iOS, OS X and watchOS, which
 
 ## Requirements
 
-* Xcode 7 or later
-* Base SDK: iOS 9.0 / OS X 10.11 / watchOS 2.0 or later
-* Deployment Target: iOS 5.0 / OS X 10.6 / watchOS 2.0 or later
+* Xcode 7.1 or later
+* Base SDK: iOS 9.1 / OS X 10.11 / watchOS 2.0 / tvOS 9.0 or later
+* Deployment Target: iOS 5.0 / OS X 10.6 / watchOS 2.0 / tvOS 9.0 or later
 
 ## Installation
 
