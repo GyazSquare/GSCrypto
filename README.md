@@ -2,7 +2,7 @@ GSCrypto
 ========
 [![Build Status](https://travis-ci.org/GyazSquare/GSCrypto.svg?branch=master)](https://travis-ci.org/GyazSquare/GSCrypto)
 
-GSCrypto is a simple Objective-C digest library for iOS, OS X and watchOS, which is based on the libSystem Common Crypto library.
+GSCrypto is a simple Objective-C digest library for iOS, OS X, watchOS and tvOS, which is based on the libSystem Common Crypto library.
 
 ## Requirements
 
