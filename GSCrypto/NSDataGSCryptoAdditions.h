@@ -5,7 +5,11 @@
 
 @import Foundation.NSData;
 
+#ifdef COCOAPODS
+@import CommonCrypto;
+#else
 #include <CommonCrypto/CommonCrypto.h>
+#endif
 
 NS_ASSUME_NONNULL_BEGIN
 
