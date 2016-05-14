@@ -14,6 +14,6 @@ Pod::Spec.new do |s|
   s.pod_target_xcconfig = {
     'HEADER_SEARCH_PATHS' => '$(PODS_ROOT)/GSCrypto/CommonCrypto'
   }
-  s.source_files = 'GSCrypto/*.{h,m}'
+  s.source_files = 'GSCrypto/*.{h,m}', 'CommonCrypto/module.modulemap'
   s.preserve_paths = 'CommonCrypto/module.modulemap'
 end
