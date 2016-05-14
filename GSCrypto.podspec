@@ -12,11 +12,11 @@ Pod::Spec.new do |s|
   s.watchos.deployment_target = '2.0'
   s.requires_arc = true
   s.pod_target_xcconfig = {
-    'HEADER_SEARCH_PATHS' => '$(PODS_ROOT)/GSCrypto/CommonCrypto'
+    'HEADER_SEARCH_PATHS' => '$(inherited) $(PODS_ROOT)/GSCrypto/CommonCrypto'
   }
   s.user_target_xcconfig = {
-    'HEADER_SEARCH_PATHS' => '$(PODS_ROOT)/GSCrypto/CommonCrypto'
+    'HEADER_SEARCH_PATHS' => '$(inherited) $(PODS_ROOT)/GSCrypto/CommonCrypto'
   }
   s.source_files = 'GSCrypto/*.{h,m}'
-  s.resource_bundle = { 'CommonCrypto' => 'CommonCrypto/module.modulemap' }
+  s.preserve_path = 'CommonCrypto/module.modulemap'
 end
